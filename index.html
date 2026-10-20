@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maya Portfolio | Marta Nega Desta</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: {
+                            900: '#0B0F19',
+                            800: '#111827',
+                            700: '#1F2937',
+                            600: '#374151',
+                        },
+                        cyan: {
+                            400: '#38BDF8',
+                            500: '#0EA5E9',
+                            600: '#0284C7',
+                        },
+                        emerald: {
+                            400: '#34D399',
+                            500: '#10B981',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0F19;
+            color: #F3F4F6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-panel-interactive {
+            background: rgba(17, 24, 39, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-panel-interactive:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.2);
+        }
+
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+        }
+
+        .tech-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 0.375rem;
+            background: rgba(14, 165, 233, 0.1);
+            color: #38BDF8;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .pulse-dot {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            animation: pulse-emerald 2s infinite;
+        }
+
+        @keyframes pulse-emerald {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0B0F19; }
+        ::-webkit-scrollbar-thumb { background: #1F2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #374151; }
+    </style>
+</head>
+<body class="cyber-grid min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
+
+    <!-- Sticky Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-gray-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-mono font-bold text-sm group-hover:border-cyan-400 transition-colors">
+                    MP
+                </div>
+                <span class="font-bold tracking-tight text-gray-100 font-sans text-lg group-hover:text-cyan-400 transition-colors">
+                    Maya.Portfolio
+                </span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400 font-mono">
+                <a href="#about" class="hover:text-cyan-400 transition-colors">/about</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors">/projects</a>
+                <a href="#intel" class="hover:text-cyan-400 transition-colors">/defense-intel</a>
+                <a href="#certificates" class="hover:text-cyan-400 transition-colors">/certificates</a>
+                <a href="#experience" class="hover:text-cyan-400 transition-colors">/milestones</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors">/contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-4">
+                <a href="https://github.com/Maya-et" target="_blank" class="p-2 text-gray-400 hover:text-white transition-colors" title="GitHub"><i data-lucide="github" class="w-5 h-5"></i></a>
+                <a href="https://www.linkedin.com/in/marta-nega-desta-020523271/" target="_blank" class="p-2 text-gray-400 hover:text-cyan-400 transition-colors" title="LinkedIn"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/15 hover:bg-cyan-500/25 text-cyan-400 border border-cyan-500/30 text-xs font-mono font-semibold transition-all">
+                    <i data-lucide="mail" class="w-3.5 h-3.5"></i> CONTACT
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24 pb-16 space-y-24">
+
+        <!-- HERO SECTION WITH PROMINENT PHOTO -->
+        <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+            <div class="space-y-8">
+
+                <div class="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full glass-panel border border-emerald-500/30 text-emerald-400 font-mono text-xs">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot"></span>
+                    OPEN FOR CYBERSECURITY & SOFTWARE ROLES
+                </div>
+
+                <!-- PROMINENT PHOTO SHOWCASE -->
+                <div class="relative w-full max-w-2xl rounded-2xl overflow-hidden glass-panel border border-gray-700/80 shadow-2xl shadow-cyan-500/10">
+                    <div class="relative flex flex-col md:flex-row items-center gap-6 p-4 sm:p-6 bg-obsidian-900/80">
+                        <div class="relative w-44 h-56 sm:w-52 sm:h-64 flex-shrink-0 rounded-xl overflow-hidden border-2 border-cyan-500/40 shadow-lg shadow-cyan-500/20">
+                            <img src="myu.jpg" alt="Marta Nega Desta" class="w-full h-full object-cover">
+                        </div>
+                        
+                        <div class="space-y-3 text-left w-full">
+                            <div class="inline-block px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 font-mono text-xs border border-cyan-500/20">
+                                EXECUTIVE ENGINEER PROFILE
+                            </div>
+                            <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Marta Nega Desta</h2>
+                            <p class="text-cyan-400 font-mono text-sm">Software Engineer | Future Cybersecurity Specialist</p>
+                            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                                Wolkite University 4th-Year Software Engineer dedicated to specializing in Cybersecurity, backed by practical training from INSA Cyber Talent Camp and ALX.
+                            </p>
+                            <div class="pt-2 flex flex-wrap gap-2 text-[11px] font-mono text-gray-300">
+                                <span class="px-2 py-1 rounded bg-gray-800 border border-gray-700">📍 Wolkite, Ethiopia</span>
+                                <span class="px-2 py-1 rounded bg-gray-800 border border-gray-700">🛡️ Aspiring Cybersecurity Specialist</span>
+                                <span class="px-2 py-1 rounded bg-gray-800 border border-gray-700">💻 Full-Stack Dev</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4 max-w-4xl">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Architecting Secure Systems & Threat Intelligence
+                    </h1>
+
+                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed pt-2">
+                        Fourth-year Software Engineering student at Wolkite University aspiring to specialize in Cybersecurity. Passionate about secure system architecture, application security audits, full-stack development, and real-time threat intelligence dashboards.
+                    </p>
+                </div>
+
+                <!-- QUICK METRICS -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl pt-2">
+                    <div class="glass-panel p-4 rounded-xl border-l-4 border-l-cyan-500">
+                        <div class="text-2xl font-bold font-mono text-white">4th Year</div>
+                        <div class="text-xs text-gray-400 mt-1">Software Eng. @ Wolkite University</div>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl border-l-4 border-l-emerald-500">
+                        <div class="text-2xl font-bold font-mono text-white">INSA '26</div>
+                        <div class="text-xs text-gray-400 mt-1">5th Round Cyber Talent Alumni</div>
+                    </div>
+                    <div class="glass-panel p-4 rounded-xl border-l-4 border-l-purple-500">
+                        <div class="text-2xl font-bold font-mono text-white">Certified</div>
+                        <div class="text-xs text-gray-400 mt-1">ALX, RedHat & Ethiocoders</div>
+                    </div>
+                </div>
+
+                <!-- DIRECT CONTACT ACTION BUTTONS -->
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="mailto:negamarta18@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-obsidian-900 font-bold text-sm transition-all shadow-lg shadow-cyan-500/20">
+                        <i data-lucide="mail" class="w-4 h-4"></i> negamarta18@gmail.com
+                    </a>
+                    <a href="tel:+251973320344" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass-panel hover:bg-gray-800 text-emerald-400 font-mono text-sm border border-emerald-500/30 transition-all">
+                        <i data-lucide="phone" class="w-4 h-4"></i> +251 973 320 344
+                    </a>
+                    <a href="https://www.linkedin.com/in/marta-nega-desta-020523271/" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass-panel hover:bg-gray-800 text-cyan-400 font-mono text-sm border border-cyan-500/30 transition-all">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn Profile
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FEATURED PROJECTS -->
+        <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <div class="text-cyan-400 font-mono text-xs tracking-wider uppercase mb-2">// Featured Work</div>
+                    <h2 class="text-3xl font-extrabold text-white">Engineering & Security Projects</h2>
+                </div>
+                
+                <div class="flex flex-wrap gap-2 font-mono text-xs">
+                    <button class="filter-btn active px-3 py-1.5 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40" data-filter="all">ALL</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-lg glass-panel text-gray-400 hover:text-white border border-gray-800" data-filter="cyber">CYBERSECURITY</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-lg glass-panel text-gray-400 hover:text-white border border-gray-800" data-filter="web">WEB APPS</button>
+                    <button class="filter-btn px-3 py-1.5 rounded-lg glass-panel text-gray-400 hover:text-white border border-gray-800" data-filter="ml">ML & INTELLIGENCE</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <!-- Project 1 -->
+                <div class="project-card cyber glass-panel-interactive rounded-2xl p-6 flex flex-col justify-between border-l-4 border-l-cyan-500">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-cyan-400 flex items-center gap-1.5"><i data-lucide="shield-alert" class="w-4 h-4"></i> FLAGSHIP PROJECT</span>
+                            <span class="text-xs font-mono text-gray-500">2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Security Intelligence & Cyber Defense Dashboard</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Interactive real-time analyst dashboard engineered for threat telemetry visualization, attack graph analysis, real-time alert triage, and network packet monitoring.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="tech-badge">React</span>
+                            <span class="tech-badge">Redux Toolkit</span>
+                            <span class="tech-badge">Material UI</span>
+                            <span class="tech-badge">Leaflet</span>
+                            <span class="tech-badge">WebSockets</span>
+                        </div>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-gray-800/80 flex items-center justify-between">
+                        <a href="https://github.com/Maya-et" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300"><i data-lucide="github" class="w-4 h-4"></i> VIEW REPOSITORY</a>
+                        <span class="text-xs font-mono text-emerald-400">LIVE TELEMETRY</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card cyber glass-panel-interactive rounded-2xl p-6 flex flex-col justify-between border-l-4 border-l-emerald-500">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-emerald-400 flex items-center gap-1.5"><i data-lucide="lock" class="w-4 h-4"></i> ZERO-TRUST CAPSTONE</span>
+                            <span class="text-xs font-mono text-gray-500">2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">ZT-UniSafe Access Control Engine</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Zero-Trust identity verification and dynamic access control engine leveraging FastAPI backend, Redis session handling, dynamic Telegram OTP verification, and Nginx auth subrequests.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="tech-badge">FastAPI</span>
+                            <span class="tech-badge">Redis</span>
+                            <span class="tech-badge">Docker</span>
+                            <span class="tech-badge">Nginx</span>
+                            <span class="tech-badge">Telegram API</span>
+                        </div>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-gray-800/80 flex items-center justify-between">
+                        <a href="https://github.com/Maya-et" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300"><i data-lucide="github" class="w-4 h-4"></i> VIEW REPOSITORY</a>
+                        <span class="text-xs font-mono text-gray-500">AUTH ENGINE</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card ml web glass-panel-interactive rounded-2xl p-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-purple-400 flex items-center gap-1.5"><i data-lucide="brain-circuit" class="w-4 h-4"></i> MACHINE LEARNING</span>
+                            <span class="text-xs font-mono text-gray-500">2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">TruthLens Ethiopia</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Amharic and English fake news detection dashboard powered by machine learning NLP classification pipelines and custom text processing models.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Streamlit</span>
+                            <span class="tech-badge">FastAPI</span>
+                            <span class="tech-badge">Scikit-Learn</span>
+                        </div>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-gray-800/80 flex items-center justify-between">
+                        <a href="https://github.com/Maya-et" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300"><i data-lucide="github" class="w-4 h-4"></i> VIEW REPOSITORY</a>
+                        <span class="text-xs font-mono text-purple-400">NLP MODEL</span>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card web glass-panel-interactive rounded-2xl p-6 flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-mono text-yellow-400 flex items-center gap-1.5"><i data-lucide="server" class="w-4 h-4"></i> FULL-STACK SYSTEM</span>
+                            <span class="text-xs font-mono text-gray-500">2025 - 2026</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Lab Equipment Booking System</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Desktop, backend, and mobile Android system built for laboratory inventory scheduling and resource reservation with relational database integration.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 pt-2">
+                            <span class="tech-badge">Java</span>
+                            <span class="tech-badge">MySQL</span>
+                            <span class="tech-badge">Android Studio</span>
+                            <span class="tech-badge">REST API</span>
+                        </div>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-gray-800/80 flex items-center justify-between">
+                        <a href="https://github.com/Maya-et" target="_blank" class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 hover:text-cyan-300"><i data-lucide="github" class="w-4 h-4"></i> VIEW REPOSITORY</a>
+                        <span class="text-xs font-mono text-gray-500">DESKTOP + MOBILE</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DEFENSE INTEL INTERACTIVE MODULE -->
+        <section id="intel" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-gray-800 space-y-6">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-800 pb-6">
+                    <div>
+                        <div class="text-cyan-400 font-mono text-xs uppercase tracking-wider mb-1">// Threat Visualization Engine</div>
+                        <h2 class="text-2xl font-bold text-white flex items-center gap-2"><i data-lucide="radar" class="w-6 h-6 text-cyan-400"></i> Cyber Defense Simulation Network</h2>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span id="incidentCounter" class="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 font-mono text-xs">INTERCEPTED: 142 VECTOR ATTEMPTS</span>
+                        <button id="triggerAttackBtn" class="px-3.5 py-1.5 rounded-lg bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-300 border border-cyan-500/40 text-xs font-mono transition-colors">TRIGGER SIMULATION</button>
+                    </div>
+                </div>
+                <div class="relative w-full h-64 sm:h-80 bg-obsidian-900 rounded-xl overflow-hidden border border-gray-800">
+                    <canvas id="attackCanvas" class="w-full h-full block"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS & COMPETENCIES MATRIX -->
+        <section id="skills" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div class="text-cyan-400 font-mono text-xs tracking-wider uppercase mb-2">// Technical Expertise</div>
+            <h2 class="text-3xl font-extrabold text-white mb-8">Technical Stack & Domain Capabilities</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel rounded-2xl p-6 border border-gray-800 space-y-4">
+                    <h3 class="text-lg font-bold text-white">Cybersecurity & SecOps</h3>
+                    <ul class="space-y-2 font-mono text-xs text-gray-300">
+                        <li>• OWASP Top 10 Security Audit</li>
+                        <li>• Penetration Testing Methodologies</li>
+                        <li>• Wireshark & Network Packet Analysis</li>
+                        <li>• Kali Linux & Terminal Administration</li>
+                        <li>• x86-64 Assembly Reverse Engineering</li>
+                    </ul>
+                </div>
+                <div class="glass-panel rounded-2xl p-6 border border-gray-800 space-y-4">
+                    <h3 class="text-lg font-bold text-white">Backend & Architecture</h3>
+                    <ul class="space-y-2 font-mono text-xs text-gray-300">
+                        <li>• Python & FastAPI Web Services</li>
+                        <li>• Java Application & JavaFX Engineering</li>
+                        <li>• Redis Caching & Session Storage</li>
+                        <li>• Docker Containerization</li>
+                        <li>• MySQL & Relational Databases</li>
+                    </ul>
+                </div>
+                <div class="glass-panel rounded-2xl p-6 border border-gray-800 space-y-4">
+                    <h3 class="text-lg font-bold text-white">Frontend & UI Systems</h3>
+                    <ul class="space-y-2 font-mono text-xs text-gray-300">
+                        <li>• React & Modern JavaScript</li>
+                        <li>• Redux Toolkit State Management</li>
+                        <li>• Material UI & Tailwind CSS</li>
+                        <li>• Streamlit ML Prototyping</li>
+                        <li>• Real-time WebSockets & Leaflet</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CERTIFICATES GALLERY SECTION -->
+        <section id="certificates" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div class="text-cyan-400 font-mono text-xs tracking-wider uppercase mb-2">// Verified Credentials</div>
+            <h2 class="text-3xl font-extrabold text-white mb-8">Certificates & Awards Gallery</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Cert 1 -->
+                <div class="glass-panel rounded-2xl p-5 border border-gray-800 space-y-4 group">
+                    <div class="relative overflow-hidden rounded-xl border border-gray-700/80 bg-obsidian-900 aspect-[4/3]">
+                        <img src="alx_cyber_cert.png" alt="ALX Cybersecurity Certificate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">ALX Cybersecurity Certificate</h3>
+                            <p class="text-xs text-cyan-400 font-mono mt-0.5">Verified Professional Achievement</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs">VERIFIED</span>
+                    </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="glass-panel rounded-2xl p-5 border border-gray-800 space-y-4 group">
+                    <div class="relative overflow-hidden rounded-xl border border-gray-700/80 bg-obsidian-900 aspect-[4/3]">
+                        <img src="alx_foundations_cert.png" alt="ALX Professional Foundations Certificate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">ALX Professional Foundations</h3>
+                            <p class="text-xs text-cyan-400 font-mono mt-0.5">Verified Leadership & Workforce Skills</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs">VERIFIED</span>
+                    </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="glass-panel rounded-2xl p-5 border border-gray-800 space-y-4 group">
+                    <div class="relative overflow-hidden rounded-xl border border-gray-700/80 bg-obsidian-900 aspect-[4/3]">
+                        <img src="Ethiocoders.png" alt="Ethiocoders Certificate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">Ethiocoders Certificate</h3>
+                            <p class="text-xs text-cyan-400 font-mono mt-0.5">Programming Fundamentals Training</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs">VERIFIED</span>
+                    </div>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="glass-panel rounded-2xl p-5 border border-gray-800 space-y-4 group">
+                    <div class="relative overflow-hidden rounded-xl border border-gray-700/80 bg-obsidian-900 aspect-[4/3]">
+                        <img src="RedHat.png" alt="RedHat Certificate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-white">RedHat Academy Certificate</h3>
+                            <p class="text-xs text-cyan-400 font-mono mt-0.5">Program Learner Achievement</p>
+                        </div>
+                        <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs">VERIFIED</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATION & MILESTONES -->
+        <section id="experience" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div class="text-cyan-400 font-mono text-xs tracking-wider uppercase mb-2">// Academic & Training Journey</div>
+            <h2 class="text-3xl font-extrabold text-white mb-8">Education, Certifications & Achievements</h2>
+
+            <div class="relative border-l-2 border-gray-800 ml-4 pl-6 space-y-8">
+                
+                <!-- Wolkite University -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-obsidian-900"></div>
+                    <div class="glass-panel p-6 rounded-2xl border border-gray-800 space-y-2">
+                        <div class="flex items-center justify-between font-mono text-xs text-cyan-400 font-bold">WOLKITE UNIVERSITY <span class="text-gray-500">2022 - PRESENT</span></div>
+                        <h3 class="text-xl font-bold text-white">B.Sc. in Software Engineering (4th Year)</h3>
+                        <p class="text-gray-400 text-sm">Focusing on software architecture, network security, database management, and capstone software engineering.</p>
+                    </div>
+                </div>
+
+                <!-- INSA Cyber Talent -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-obsidian-900"></div>
+                    <div class="glass-panel p-6 rounded-2xl border border-gray-800 space-y-2">
+                        <div class="flex items-center justify-between font-mono text-xs text-emerald-400 font-bold">INSA ETHIOPIA <span class="text-gray-500">2026</span></div>
+                        <h3 class="text-xl font-bold text-white">5th Round Cyber Talent Summer Camp (Jimma University)</h3>
+                        <p class="text-gray-400 text-sm">Intensive cyber defense training, network vulnerability assessment, incident response, and hands-on laboratory evaluations.</p>
+                    </div>
+                </div>
+
+                <!-- ALX Program Certification -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-purple-500 border-4 border-obsidian-900"></div>
+                    <div class="glass-panel p-6 rounded-2xl border border-gray-800 space-y-2">
+                        <div class="flex items-center justify-between font-mono text-xs text-purple-400 font-bold">ALX PROGRAM <span class="text-gray-500">2026</span></div>
+                        <h3 class="text-xl font-bold text-white">ALX Cybersecurity & Professional Foundations Certification</h3>
+                        <p class="text-gray-400 text-sm">Official certification in cybersecurity fundamentals, threat analysis, application vulnerability assessment, and professional leadership.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DEDICATED CONTACT SECTION -->
+        <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div class="glass-panel rounded-2xl p-8 border border-cyan-500/30 text-center space-y-6">
+                <div class="text-cyan-400 font-mono text-xs uppercase tracking-wider">// Get In Touch</div>
+                <h2 class="text-3xl font-extrabold text-white">Let's Connect & Collaborate</h2>
+                <p class="text-gray-300 text-sm max-w-xl mx-auto">
+                    I am actively seeking cybersecurity and software engineering opportunities, internships, and collaborations. Reach out directly via email, phone, or LinkedIn!
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                    <a href="mailto:negamarta18@gmail.com" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-obsidian-900 font-bold text-sm transition-all shadow-lg shadow-cyan-500/20">
+                        <i data-lucide="mail" class="w-4 h-4"></i> negamarta18@gmail.com
+                    </a>
+                    <a href="tel:+251973320344" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass-panel hover:bg-gray-800 text-emerald-400 font-mono text-sm border border-emerald-500/30 transition-all">
+                        <i data-lucide="phone" class="w-4 h-4"></i> +251 973 320 344
+                    </a>
+                    <a href="https://www.linkedin.com/in/marta-nega-desta-020523271/" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl glass-panel hover:bg-gray-800 text-cyan-400 font-mono text-sm border border-cyan-500/30 transition-all">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER WITH CONTACT INFO -->
+    <footer class="border-t border-gray-800/80 bg-obsidian-900/80 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-mono font-bold text-xs">
+                    MP
+                </div>
+                <div class="text-sm">
+                    <p class="font-bold text-white">Marta Nega Desta</p>
+                    <p class="text-xs text-gray-500 font-mono">Maya.Portfolio</p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap items-center justify-center gap-6 font-mono text-xs text-gray-400">
+                <a href="mailto:negamarta18@gmail.com" class="hover:text-cyan-400 flex items-center gap-1.5">
+                    <i data-lucide="mail" class="w-4 h-4"></i> negamarta18@gmail.com
+                </a>
+                <a href="tel:+251973320344" class="hover:text-cyan-400 flex items-center gap-1.5">
+                    <i data-lucide="phone" class="w-4 h-4"></i> +251 973 320 344
+                </a>
+                <a href="https://www.linkedin.com/in/marta-nega-desta-020523271/" target="_blank" class="hover:text-cyan-400 flex items-center gap-1.5">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                </a>
+                <a href="https://github.com/Maya-et" target="_blank" class="hover:text-cyan-400 flex items-center gap-1.5">
+                    <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                </a>
+            </div>
+
+            <div class="text-xs font-mono text-gray-600">
+                &copy; 2026 Marta Nega Desta. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        lucide.createIcons();
+
+        // Project Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/40');
+                    b.classList.add('glass-panel', 'text-gray-400', 'border-gray-800');
+                });
+                btn.classList.add('active', 'bg-cyan-500/20', 'text-cyan-300', 'border-cyan-500/40');
+                btn.classList.remove('glass-panel', 'text-gray-400', 'border-gray-800');
+
+                const filter = btn.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.classList.contains(filter)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Canvas Attack Simulation
+        const canvas = document.getElementById('attackCanvas');
+        const ctx = canvas.getContext('2d');
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.clientWidth;
+            canvas.height = canvas.parentElement.clientHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const nodes = [
+            { x: 0.2, y: 0.5, color: '#38BDF8', label: 'Wolkite Node' },
+            { x: 0.5, y: 0.3, color: '#10B981', label: 'ZT-Proxy' },
+            { x: 0.5, y: 0.7, color: '#38BDF8', label: 'DB Cluster' },
+            { x: 0.8, y: 0.5, color: '#F87171', label: 'External Vector' }
+        ];
+
+        let pulses = [];
+        function addPulse() {
+            pulses.push({ from: 3, to: Math.floor(Math.random() * 3), progress: 0, speed: 0.01 + Math.random() * 0.015 });
+        }
+        setInterval(addPulse, 1200);
+
+        function drawNetwork() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const width = canvas.width, height = canvas.height;
+
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+            ctx.lineWidth = 1;
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    ctx.beginPath();
+                    ctx.moveTo(nodes[i].x * width, nodes[i].y * height);
+                    ctx.lineTo(nodes[j].x * width, nodes[j].y * height);
+                    ctx.stroke();
+                }
+            }
+
+            for (let i = pulses.length - 1; i >= 0; i--) {
+                const p = pulses[i];
+                p.progress += p.speed;
+                const start = nodes[p.from], end = nodes[p.to];
+                const cx = (start.x + (end.x - start.x) * p.progress) * width;
+                const cy = (start.y + (end.y - start.y) * p.progress) * height;
+
+                ctx.beginPath();
+                ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+                ctx.fillStyle = '#EF4444';
+                ctx.fill();
+
+                if (p.progress >= 1) pulses.splice(i, 1);
+            }
+
+            nodes.forEach(node => {
+                const nx = node.x * width, ny = node.y * height;
+                ctx.beginPath();
+                ctx.arc(nx, ny, 8, 0, Math.PI * 2);
+                ctx.fillStyle = node.color;
+                ctx.fill();
+                ctx.fillStyle = '#9CA3AF';
+                ctx.font = '10px JetBrains Mono';
+                ctx.fillText(node.label, nx - 25, ny + 20);
+            });
+
+            requestAnimationFrame(drawNetwork);
+        }
+        drawNetwork();
+
+        let count = 142;
+        const counterEl = document.getElementById('incidentCounter');
+        document.getElementById('triggerAttackBtn').addEventListener('click', () => {
+            for (let i = 0; i < 5; i++) setTimeout(addPulse, i * 200);
+            count += 5;
+            counterEl.textContent = `INTERCEPTED: ${count} VECTOR ATTEMPTS`;
+        });
+    </script>
+</body>
+</html>
